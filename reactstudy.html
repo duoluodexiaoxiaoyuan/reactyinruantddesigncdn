@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>react展示数据的抽屉</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="./js/moment.js"></script>
+    <script src="./js/antd.min.js"></script>
+    <link rel="stylesheet" href="./css/antd.css">
+</head>
+<body>
+  <div id="example"></div>
+  <script type="text/babel">
+  class Toggle extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {visible: false};
+  
+     
+    }
+  
+    
+    showDrawer = () => {
+      this.setState({visible: true})
+    }
+
+    onClose = () => {
+      this.setState({visible: false})
+    }
+  
+    render() {
+      return (
+        <div>
+          <antd.Button type="primary" onClick={this.showDrawer}>
+        Open
+      </antd.Button>
+      <antd.Drawer title="展示所有的数据" placement="right" onClose={this.onClose} visible={this.state.visible}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </antd.Drawer>
+        </div>
+      );
+    }
+  }
+  
+  ReactDOM.render(
+    <Toggle />,
+    document.getElementById('example')
+  );
+  </script>
+</body>
+</html>
